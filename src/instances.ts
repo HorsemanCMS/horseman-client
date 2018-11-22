@@ -1,4 +1,5 @@
 import json from './json';
+import { IInstance } from './index';
 
 export const Instances = {
     all: async () => {
@@ -18,13 +19,5 @@ export const Instances = {
         }
     }
 }
-
-export interface IInstance {
-    id?: number;
-    accountid?: number;
-    name?: string;
-    domain?: string;
-}
-
 
 export default Instances;

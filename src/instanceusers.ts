@@ -1,4 +1,5 @@
 import json from './json';
+import { IInstanceUser } from './index';
 
 export const InstanceUsers = {
     all: async (instanceid: number) => {
@@ -33,13 +34,6 @@ export const InstanceUsers = {
             return false;
         }
     }
-}
-
-export interface IInstanceUser {
-    id: number;
-    instanceid: number;
-    roleid: number;
-    email: string;
 }
 
 export default InstanceUsers;

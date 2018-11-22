@@ -1,3 +1,4 @@
+import { IContentRecord } from '../index';
 export declare const ContentRecords: {
     all: (typeid: number) => Promise<false | IContentRecord[]>;
     one: (typeid: number, recordid: number) => Promise<false | IContentRecord>;
@@ -8,7 +9,4 @@ export declare const ContentRecords: {
         status: "success";
     }>;
 };
-export interface IContentRecord {
-    [key: string]: string | number;
-}
 export default ContentRecords;

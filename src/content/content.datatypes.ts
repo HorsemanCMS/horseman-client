@@ -6,6 +6,7 @@ enum ContentDataTypes {
     Markdown = 5,
     RichText = 6,
     HTML = 7,
+    Image = 8
 }
 
 export default ContentDataTypes;

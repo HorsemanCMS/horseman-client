@@ -1,4 +1,5 @@
 import json from '../json';
+import { IContentRecord } from '../index';
 
 export const ContentRecords = {
     all: async (typeid: number) => {
@@ -37,10 +38,6 @@ export const ContentRecords = {
             return false;
         }
     }
-}
-
-export interface IContentRecord {
-    [key:string]: string | number;
 }
 
 export default ContentRecords;

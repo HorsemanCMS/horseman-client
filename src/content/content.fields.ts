@@ -1,4 +1,5 @@
 import json from '../json';
+import { IContentField } from '../index';
 
 export const ContentFields = {
     all: async (typeid: number) => {
@@ -36,13 +37,6 @@ export const ContentFields = {
             return false;
         }
     }
-}
-
-export interface IContentField {
-    id?: number;
-    datatypeid?: number;
-    name?: string;
-    sortorder?: number;
 }
 
 export default ContentFields;

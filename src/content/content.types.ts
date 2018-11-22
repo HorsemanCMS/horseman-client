@@ -1,4 +1,5 @@
 import json from '../json';
+import { IContentType } from '../index';
 
 export const ContentTypes = {
     all: async (instanceid: number) => {
@@ -36,12 +37,6 @@ export const ContentTypes = {
             return false;
         }
     }
-}
-
-export interface IContentType {
-    [key:string]: any,
-    id?: number;
-    name?: string;
 }
 
 export default ContentTypes;

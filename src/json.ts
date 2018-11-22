@@ -2,7 +2,7 @@ import * as fetch from 'isomorphic-fetch';
 
 import { AUTHTOKEN, API_KEY, API_SECRET } from './auth';
 
-let baseUri = 'https://api.horseman.io';
+export let baseUri = 'https://api.horseman.io';
 
 export const setBaseUri = (baseuri: string) => {
     baseUri = baseuri;

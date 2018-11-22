@@ -1,5 +1,6 @@
 declare var localStorage: any;
 import json from './json';
+import { IUser } from './index';
 
 export let API_KEY: string;
 export let API_SECRET: string;
@@ -69,14 +70,6 @@ export const Register = async (user: IUser, invitetoken: string) => {
         console.log(e);
         return false;
     }
-}
-
-export interface IUser {
-    id?: number;
-    email: string;
-    password?: string;
-    firstname?: string;
-    lastname?: string;
 }
 
 export default {

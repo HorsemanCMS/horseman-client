@@ -1,4 +1,5 @@
 import json from './json';
+import { IAccount } from './index';
 
 export const Accounts = {
     all: async () => {
@@ -9,11 +10,6 @@ export const Accounts = {
             return false;
         }
     }
-}
-
-export interface IAccount {
-    id?: number;
-    name?: string;
 }
 
 export default Accounts;
