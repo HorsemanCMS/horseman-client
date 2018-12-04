@@ -10,17 +10,6 @@ import contentFiles from './content/content.files';
 import roles from './roles';
 import { setBaseUri } from './json';
 
-export const Auth = auth;
-export const Instances = instances;
-export const Accounts = accounts;
-export const InstanceUsers = instanceUsers;
-export const ContentTypes = contentTypes;
-export const ContentFields = contentFields;
-export const ContentDataTypes = contentDataTypes;
-export const ContentRecords = contentRecords;
-export const ContentFiles = contentFiles;
-export const Roles = roles;
-
 export interface IContentField {
     id?: number;
     datatypeid?: number;
@@ -64,6 +53,17 @@ export interface IInstance {
     name?: string;
     domain?: string;
 }
+
+export const Auth = auth;
+export const Instances = instances;
+export const Accounts = accounts;
+export const InstanceUsers = instanceUsers;
+export const ContentTypes = contentTypes;
+export const ContentFields = contentFields;
+export const ContentDataTypes = contentDataTypes;
+export const ContentRecords = contentRecords;
+export const ContentFiles = contentFiles;
+export const Roles = roles;
 
 export default {
     Auth,

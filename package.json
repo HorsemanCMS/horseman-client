@@ -1,8 +1,9 @@
 {
   "name": "@horseman.io/client",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Official package for interacting with the Horseman API (https://horseman.io)",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "npx webpack"
   },
