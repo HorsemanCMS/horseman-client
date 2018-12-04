@@ -7,6 +7,7 @@ declare enum ContentDataTypes {
     RichText = 6,
     HTML = 7,
     Image = 8,
-    Date = 9
+    DateTime = 9,
+    Date = 10
 }
 export default ContentDataTypes;
