@@ -1,4 +1,4 @@
-import * as fetch from 'isomorphic-fetch';
+import 'isomorphic-unfetch';
 
 import { AUTHTOKEN, API_KEY, API_SECRET } from './auth';
 

@@ -31,6 +31,7 @@ if(typeof localStorage !== 'undefined' && localStorage.getItem('hmtoken')) {
 export const ValidatingAuthToken = isAuthenticated();
 
 export const SetApiKey = (key: string, secret?: string) => {
+    AUTHTOKEN = null;
     API_KEY = key;
     API_SECRET = secret;
 }
