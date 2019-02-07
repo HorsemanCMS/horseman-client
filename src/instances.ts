@@ -1,5 +1,5 @@
 import json from './json';
-import { IInstance } from './index';
+import { IInstance } from './interfaces';
 
 export const Instances = {
     all: async () => {

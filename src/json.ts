@@ -1,6 +1,7 @@
 import 'isomorphic-unfetch';
 
-import { AUTHTOKEN, API_KEY, API_SECRET } from './auth';
+import {GetAuthToken, GetApiKey, GetApiSecret} from './auth';
+import InstanceAuth from './instanceauth';
 
 export let baseUri = 'https://api.horseman.io';
 
@@ -14,12 +15,16 @@ export const json = async <T = any, R = {}>(path: string, method: string = 'GET'
         'Content-Type': 'application/json'
     }
 
-    if(AUTHTOKEN) {
-        headers.Authorization = AUTHTOKEN;
-    } else if(API_KEY) {
-        headers["x-instance-key"] = API_KEY;
-    } else if(API_SECRET) {
-        headers["x-instance-secret"] = API_SECRET;
+    if(GetAuthToken()) {
+        headers.Authorization = GetAuthToken();
+    } else if(GetApiKey()) {
+        headers["x-instance-key"] = GetApiKey();
+    } else if(GetApiSecret()) {
+        headers["x-instance-secret"] = GetApiSecret();
+    }
+
+    if(InstanceAuth.authToken()) {
+        headers["x-instance-token"] = InstanceAuth.authToken();
     }
 
     try {

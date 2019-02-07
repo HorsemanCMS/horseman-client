@@ -1,5 +1,5 @@
 import json from '../json';
-import { IContentType } from '../index';
+import { IContentType } from '../interfaces';
 
 export const ContentTypes = {
     all: async (instanceid: number) => {

@@ -1,4 +1,4 @@
-import { IAccount } from './index';
+import { IAccount } from './interfaces';
 export declare const Accounts: {
     all: () => Promise<false | IAccount[]>;
 };

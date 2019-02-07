@@ -1,5 +1,5 @@
 import json from './json';
-import { IInstanceUser } from './index';
+import { IInstanceUser } from './interfaces';
 
 export const InstanceUsers = {
     all: async (instanceid: number) => {

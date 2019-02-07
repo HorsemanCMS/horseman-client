@@ -1,4 +1,4 @@
-import { IContentType } from '../index';
+import { IContentType } from '../interfaces';
 export declare const ContentTypes: {
     all: (instanceid: number) => Promise<false | IContentType[]>;
     one: (typeid: number) => Promise<false | IContentType>;

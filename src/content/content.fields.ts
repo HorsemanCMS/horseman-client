@@ -1,5 +1,5 @@
 import json from '../json';
-import { IContentField } from '../index';
+import { IContentField } from '../interfaces';
 
 export const ContentFields = {
     all: async (typeid: number) => {

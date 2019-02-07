@@ -1,5 +1,5 @@
 import json from '../json';
-import { IContentRecord } from '../index';
+import { IContentRecord } from '../interfaces';
 
 export const ContentRecords = {
     all: async (typeid: number) => {

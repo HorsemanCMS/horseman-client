@@ -1,4 +1,4 @@
-import { IInstanceUser } from './index';
+import { IInstanceUser } from './interfaces';
 export declare const InstanceUsers: {
     all: (instanceid: number) => Promise<false | IInstanceUser[]>;
     create: (user: IInstanceUser) => Promise<any>;

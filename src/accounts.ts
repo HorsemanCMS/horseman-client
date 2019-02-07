@@ -1,5 +1,5 @@
 import json from './json';
-import { IAccount } from './index';
+import { IAccount } from './interfaces';
 
 export const Accounts = {
     all: async () => {

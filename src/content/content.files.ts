@@ -1,4 +1,4 @@
-import { AUTHTOKEN, API_KEY, API_SECRET } from "../auth";
+import Auth from "../auth";
 import { baseUri } from "../json";
 
 export const ContentFiles = {
@@ -7,12 +7,12 @@ export const ContentFiles = {
             let headers: any = {
             }
         
-            if(AUTHTOKEN) {
-                headers.Authorization = AUTHTOKEN;
-            } else if(API_KEY) {
-                headers["x-instance-key"] = API_KEY;
-            } else if(API_SECRET) {
-                headers["x-instance-secret"] = API_SECRET;
+            if(Auth.GetAuthToken()) {
+                headers.Authorization = Auth.GetAuthToken();
+            } else if(Auth.GetApiKey()) {
+                headers["x-instance-key"] = Auth.GetApiKey();
+            } else if(Auth.GetApiSecret()) {
+                headers["x-instance-secret"] = Auth.GetApiSecret();
             }
         
             try {

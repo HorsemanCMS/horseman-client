@@ -1,15 +1,37 @@
 declare var localStorage: any;
 import json from './json';
-import { IUser } from './index';
+import { IUser } from './interfaces';
 
-export let API_KEY: string;
-export let API_SECRET: string;
-export let AUTHTOKEN: string;
-export let AUTHENTICATED: boolean = false;
+let API_KEY: string;
+let API_SECRET: string;
+let AUTHTOKEN: string;
+let AUTHENTICATED: boolean = false;
 
-export const isAuthenticated = async () => {
+export const GetApiKey = () => {
+    return API_KEY;
+}
+
+export const GetApiSecret = () => {
+    return API_SECRET;
+}
+
+export const GetAuthToken = () => {
+    return AUTHTOKEN;
+}
+
+export const isAuthenticated = () => {
+    return AUTHENTICATED;
+}
+
+export const SetApiKey = (key: string, secret?: string) => {
+    AUTHTOKEN = null;
+    API_KEY = key;
+    API_SECRET = secret;
+}
+
+export const checkAuthenticated = async () => {
     //if we've already determined that we are authenticated
-    if(AUTHENTICATED) return AUTHENTICATED;
+    if(AUTHENTICATED || !AUTHTOKEN) return AUTHENTICATED;
 
     try {
         let result = await json(`/auth/token/validate`);
@@ -28,15 +50,10 @@ if(typeof localStorage !== 'undefined' && localStorage.getItem('hmtoken')) {
     AUTHTOKEN = localStorage.getItem('hmtoken');
 }
 
-export const ValidatingAuthToken = isAuthenticated();
+export const ValidatingAuthToken = checkAuthenticated();
 
-export const SetApiKey = (key: string, secret?: string) => {
-    AUTHTOKEN = null;
-    API_KEY = key;
-    API_SECRET = secret;
-}
 
-export const SetAuthToken = (token: string) => {
+const SetAuthToken = (token: string) => {
     AUTHTOKEN = token;
     if(typeof localStorage !== 'undefined') {
         localStorage.setItem('hmtoken', token);
@@ -47,8 +64,12 @@ export const Login = async (email: string, password: string) => {
 
     try {
         let result = await json(`/auth/login`, 'POST', { email, password });
-        SetAuthToken(result.token);
-        return AUTHENTICATED = true;
+        if(result) {
+            SetAuthToken(result.token);
+            return AUTHENTICATED = true;
+        } else {
+            return AUTHENTICATED = false;
+        }
     } catch(e) {
         console.log(e);
         return AUTHENTICATED = false;
@@ -75,12 +96,11 @@ export const Register = async (user: IUser, invitetoken: string) => {
 
 export default {
     Login,
-    API_KEY,
-    API_SECRET,
-    AUTHTOKEN,
-    AUTHENTICATED,
     isAuthenticated,
     ValidatingAuthToken,
     Register,
     SetApiKey,
+    GetApiKey,
+    GetApiSecret,
+    GetAuthToken
 }

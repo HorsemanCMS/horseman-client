@@ -1,4 +1,4 @@
-import { IContentRecord } from '../index';
+import { IContentRecord } from '../interfaces';
 export declare const ContentRecords: {
     all: (typeid: number) => Promise<false | IContentRecord[]>;
     one: (typeid: number, recordid: number) => Promise<false | IContentRecord>;
