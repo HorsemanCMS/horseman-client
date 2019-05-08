@@ -1,5 +1,5 @@
 import horseman from '../src';
-horseman.Auth.SetApiKey('BBYm1TVTwGUMBjGZY9Sv4f/esshVemxKFD0wJ90xPbCs1gLiCAsSmeW3ULF9ZGD9RDeIb2WSf3NduRKlYHz0z+8=');
+horseman.Auth.SetApiKey('BAH5UsTsngKFPj+UEOHPoVwgJUAuaUGlUA6iFkSAYJjNBs51Az+56EXeda2DwnLdgEv0uJgmpa+kTIi1E9zpxaU=');
 
 test('Set Api Key', async () => {
     expect(horseman.Auth.GetApiKey()).toBeTruthy();
@@ -7,7 +7,7 @@ test('Set Api Key', async () => {
 
 test('Login', async () => {
     expect(horseman.Auth.GetAuthToken()).toBeNull();
-    let result = await horseman.Auth.Login('test@covalence.io', 'blahblah');
+    let result = await horseman.Auth.Login('matt@horseman.io', 'bugsplat');
     expect(result).toBeTruthy();
     expect(horseman.Auth.GetAuthToken()).toBeTruthy();
 })
