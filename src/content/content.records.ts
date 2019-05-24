@@ -37,6 +37,14 @@ export const ContentRecords = {
             console.log(e);
             return false;
         }
+    },
+    delete: async (typeid: number, recordid: number) => {
+        try {
+            return await json<{ status: 'success' }>(`/api/content/records/${typeid}/${recordid}`, 'DELETE');
+        } catch(e) {
+            console.log(e);
+            return false;
+        }
     }
 }
 

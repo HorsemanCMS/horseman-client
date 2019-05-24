@@ -1,6 +1,6 @@
 {
   "name": "@horseman.io/client",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Official package for interacting with the Horseman API (https://horseman.io)",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
