@@ -15,16 +15,16 @@ export const json = async <T = any, R = {}>(path: string, method: string = 'GET'
         'Content-Type': 'application/json'
     }
 
-    if(GetAuthToken()) {
-        headers.Authorization = GetAuthToken();
-    } else if(GetApiKey()) {
-        headers["x-instance-key"] = GetApiKey();
-    } else if(GetApiSecret()) {
-        headers["x-instance-secret"] = GetApiSecret();
-    }
-
     if(InstanceAuth.authToken()) {
         headers["x-instance-token"] = InstanceAuth.authToken();
+    } else {
+        if(GetAuthToken()) {
+            headers.Authorization = GetAuthToken();
+        } else if(GetApiKey()) {
+            headers["x-instance-key"] = GetApiKey();
+        } else if(GetApiSecret()) {
+            headers["x-instance-secret"] = GetApiSecret();
+        }
     }
 
     try {
