@@ -1,6 +1,6 @@
 {
   "name": "@horseman.io/client",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Official package for interacting with the Horseman API (https://horseman.io)",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -23,13 +23,13 @@
     "isomorphic-unfetch": "^3.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.0",
+    "@types/jest": "^24.0.15",
     "jest": "^24.8.0",
     "ts-jest": "^24.0.2",
-    "ts-loader": "^5.3.0",
-    "typescript": "^3.1.6",
-    "webpack": "^4.26.0",
-    "webpack-cli": "^3.1.2",
+    "ts-loader": "^5.4.5",
+    "typescript": "^3.5.2",
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.4",
     "webpack-node-externals": "^1.7.2"
   }
 }
