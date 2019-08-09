@@ -9,14 +9,14 @@ export const setBaseUri = (baseuri: string) => {
     baseUri = baseuri;
 }
 
-export const json = async <T = any, R = {}>(path: string, method: string = 'GET', body?: R) => {
+export const json = async <T = any, R = {}>(path: string, method: string = 'GET', body?: R, instanceAuthToken?: string) => {
 
     let headers: any = {
         'Content-Type': 'application/json'
     }
 
-    if(InstanceAuth.authToken()) {
-        headers["x-instance-token"] = InstanceAuth.authToken();
+    if(instanceAuthToken || InstanceAuth.authToken()) {
+        headers["x-instance-token"] = instanceAuthToken || InstanceAuth.authToken();
     } else {
         if(GetAuthToken()) {
             headers.Authorization = GetAuthToken();

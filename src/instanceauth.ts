@@ -31,7 +31,8 @@ export const InstanceAuth = {
             return false;
         }
     },
-    authToken: () => token
+    authToken: () => token,
+    setAuthToken: (t: string) => t = token,
 }
 
 
