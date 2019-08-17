@@ -32,7 +32,7 @@ export const InstanceAuth = {
         }
     },
     authToken: () => token,
-    setAuthToken: (t: string) => t = token,
+    setAuthToken: (t: string) => token = t,
 }
 
 
