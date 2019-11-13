@@ -1,5 +1,6 @@
 import json from '../json';
 import { IContentField } from '../interfaces';
+import { ReturnError } from '../error';
 
 export const ContentFields = {
     all: async (typeid: number) => {
@@ -8,8 +9,7 @@ export const ContentFields = {
                 __typeid: typeid
             });
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     },
     create: async (typeid: number, field: IContentField) => {
@@ -19,8 +19,7 @@ export const ContentFields = {
                 ...field
             });
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     },
     update: async (fieldid: number, field: IContentField) => {
@@ -33,8 +32,7 @@ export const ContentFields = {
                 ...f
             });
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     }
 }

@@ -1,5 +1,6 @@
 import Auth from "../auth";
 import { baseUri } from "../json";
+import { ReturnError } from "../error";
 
 export const ContentFiles = {
     upload: async (instanceid: number, file: any) => {
@@ -24,18 +25,12 @@ export const ContentFiles = {
                     body: data
                 });
         
-                if(result.ok) {
-                    return (await result.json());
-                } else {
-                    return false;
-                }
+                return (await result.json());
             } catch(e) {
-                console.log(e);
                 throw e;
             }
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     },
 }

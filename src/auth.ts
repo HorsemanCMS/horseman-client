@@ -1,6 +1,7 @@
 declare var localStorage: any;
 import json from './json';
 import { IUser } from './interfaces';
+import { ReturnError } from './error';
 
 let API_KEY: string;
 let API_SECRET: string;
@@ -41,7 +42,6 @@ export const checkAuthenticated = async () => {
             return AUTHENTICATED = false;
         }
     } catch(e) {
-        console.log(e);
         return AUTHENTICATED = false;
     }
 }
@@ -71,7 +71,6 @@ export const Login = async (email: string, password: string) => {
             return AUTHENTICATED = false;
         }
     } catch(e) {
-        console.log(e);
         return AUTHENTICATED = false;
     }
 }
@@ -89,8 +88,7 @@ export const Register = async (user: IUser, invitetoken: string) => {
         let result = await json(`/auth/register/${invitetoken}`, `POST`, user);
        return result;
     } catch(e) {
-        console.log(e);
-        return false;
+        return ReturnError(e);
     }
 }
 

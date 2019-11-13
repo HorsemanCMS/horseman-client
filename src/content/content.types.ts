@@ -1,5 +1,6 @@
 import json from '../json';
 import { IContentType } from '../interfaces';
+import { ReturnError } from '../error';
 
 export const ContentTypes = {
     all: async (instanceid: number) => {
@@ -8,16 +9,14 @@ export const ContentTypes = {
                 __instanceid: instanceid
             });
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     },
     one: async (typeid: number) => {
         try {
             return await json<IContentType>(`/api/content/types/${typeid}`);
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     },
     create: async (contentType: IContentType, instanceid: number) => {
@@ -25,16 +24,14 @@ export const ContentTypes = {
             contentType.__instanceid = instanceid;
             return await json<{id: number}>(`/api/content/types/`, `POST`, contentType);
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     },
     update: async (contentType: IContentType, typeid: number) => {
         try {
             return await json<number>(`/api/content/types/${typeid}`, `PUT`, contentType);
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     }
 }

@@ -1,21 +1,20 @@
 import json from '../json';
 import { IContentRecord } from '../interfaces';
+import { ReturnError } from '../error';
 
 export const ContentRecords = {
     all: async (typeid: number) => {
         try {
             return await json<Array<IContentRecord>>(`/api/content/records/${typeid}`);
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     },
     one: async (typeid: number, recordid: number) => {
         try {
             return await json<IContentRecord>(`/api/content/records/${typeid}/${recordid}`);
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     },
     create: async (typeid: number, record: IContentRecord) => {
@@ -24,8 +23,7 @@ export const ContentRecords = {
                 ...record
             });
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     },
     update: async (typeid: number, recordid: number, record: IContentRecord) => {
@@ -34,16 +32,14 @@ export const ContentRecords = {
                 ...record
             });
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     },
     delete: async (typeid: number, recordid: number) => {
         try {
             return await json<{ status: 'success' }>(`/api/content/records/${typeid}/${recordid}`, 'DELETE');
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     }
 }

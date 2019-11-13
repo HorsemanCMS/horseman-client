@@ -1,5 +1,6 @@
 import json from './json';
 import { IInstanceLogin } from './interfaces';
+import { ReturnError } from './error';
 
 let token: string;
 
@@ -10,21 +11,19 @@ export const InstanceAuth = {
                 email,
                 password
             });
-            token = result?.token;
+            token = result?.data?.token;
             return result;
         } catch(e) {
-            console.log(e);
-            return false;
+            return ReturnError(e);
         }
     },
     register: async (login: IInstanceLogin) => {
         try {
             const result = await json<{ token: string }>('/api/instance/auth/register', 'POST', login);
-            token = result?.token;
+            token = result?.data?.token;
             return result;
         } catch(e) {
-            console.log(e);
-            return { error: { message: e.message, status: 0 }};
+            return ReturnError(e);
         }
     },
     authToken: () => token,
