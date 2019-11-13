@@ -10,9 +10,7 @@ export const InstanceAuth = {
                 email,
                 password
             });
-            if(result) {
-                token = result.token;
-            }
+            token = result?.token;
             return result;
         } catch(e) {
             console.log(e);
@@ -22,13 +20,11 @@ export const InstanceAuth = {
     register: async (login: IInstanceLogin) => {
         try {
             const result = await json<{ token: string }>('/api/instance/auth/register', 'POST', login);
-            if(result) {
-                token = result.token;
-            }
+            token = result?.token;
             return result;
         } catch(e) {
             console.log(e);
-            return false;
+            return { error: { message: e.message, status: 0 }};
         }
     },
     authToken: () => token,

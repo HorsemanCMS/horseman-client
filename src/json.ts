@@ -2,6 +2,7 @@ import 'isomorphic-unfetch';
 
 import {GetAuthToken, GetApiKey, GetApiSecret} from './auth';
 import InstanceAuth from './instanceauth';
+import { HorsemanError } from './error';
 
 export let baseUri = 'https://api.horseman.io';
 
@@ -9,7 +10,7 @@ export const setBaseUri = (baseuri: string) => {
     baseUri = baseuri;
 }
 
-export const json = async <T = any, R = {}>(path: string, method: string = 'GET', body?: R, instanceAuthToken?: string) => {
+export const json = async <T = any, R = {}>(path: string, method: string = 'GET', body?: R, instanceAuthToken?: string): Promise<T | HorsemanError> => {
 
     let headers: any = {
         'Content-Type': 'application/json'
@@ -37,11 +38,19 @@ export const json = async <T = any, R = {}>(path: string, method: string = 'GET'
         if(result.ok) {
             return <T>(await result.json());
         } else {
-            return false;
+            const error = await result.json()
+            if(error?.status) {
+                return <HorsemanError>(error);
+            }
         }
     } catch(e) {
         console.log(e);
-        throw e;
+        return {
+            error: {
+                message: e.message,
+                status: 0
+            }
+        };
     }
 }
 
