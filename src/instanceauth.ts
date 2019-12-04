@@ -30,6 +30,4 @@ export const InstanceAuth = {
     setAuthToken: (t: string) => token = t,
 }
 
-
-
 export default InstanceAuth;

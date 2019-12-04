@@ -65,7 +65,7 @@ export const Login = async (email: string, password: string) => {
     try {
         let result = await json(`/auth/login`, 'POST', { email, password });
         if(result) {
-            SetAuthToken(result.token);
+            SetAuthToken(result?.data?.token);
             return AUTHENTICATED = true;
         } else {
             return AUTHENTICATED = false;

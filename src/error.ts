@@ -1,10 +1,11 @@
-export type HorsemanError = {
+export interface HorsemanError {
   status: number;
   message: string;
   code?: number;
 }
 
-export type HorsemanErrorResponse = {
+interface HorsemanErrorResponse {
+  data: undefined;
   error: HorsemanError;
 }
 
@@ -12,6 +13,7 @@ export type HorsemanErrorResponse = {
 export const ReturnError = (e: Error): HorsemanErrorResponse => {
   console.error(e);
   return {
+    data: undefined,
     error: {
       message: e.message,
       status: 0

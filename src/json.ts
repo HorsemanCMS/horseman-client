@@ -43,7 +43,11 @@ export const json = async <T = any, R = {}>(
       return { data: await result.json() };
     } else {
       const resp = await result.json();
-      return resp;
+      if(resp.error) {
+        return resp;
+      } else {
+          throw Error("Unknown response.");
+      }
     }
   } catch (e) {
     return ReturnError(e);
